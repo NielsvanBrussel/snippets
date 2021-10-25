@@ -64,7 +64,7 @@ export const GlobalProvider = ({ children }) => {
       }
   
       try {
-        const res = await axios.post('/api/v1/snippets', newSnippet, config)
+        const res = await axios.post('/api/snippets/create', newSnippet, config)
   
         dispatch({
           type: 'ADD_SNIPPET',

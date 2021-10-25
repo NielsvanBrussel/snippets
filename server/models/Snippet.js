@@ -11,7 +11,7 @@ const snippetSchema = mongoose.Schema({
     },
     description: {
         type: String,
-        required: true,
+        required: false,
         min: 6,
         max: 2000
     },
@@ -21,15 +21,19 @@ const snippetSchema = mongoose.Schema({
     },
     creator: {
         type: String,
+        required: false,
     },
     html: {
-        type: String,        
+        type: String,
+        required: false,        
     },
     css: {
-        type: String,        
+        type: String,
+        required: false,        
     },
     javaS: {
-        type: String,        
+        type: String,
+        required: false,        
     },
 })
 

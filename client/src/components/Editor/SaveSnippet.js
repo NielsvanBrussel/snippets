@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react'
 import { GlobalContext } from "../../context/GlobalState";
+import { v4 as uuidv4 } from 'uuid';
 
 const SaveSnippet = ({ html, javaS, css }) => {
 
@@ -10,7 +11,7 @@ const SaveSnippet = ({ html, javaS, css }) => {
     const onSubmit = e => {
         e.preventDefault()
         const newSnippet = {
-            id: Math.floor(Math.random() * 100000000),
+            id: uuidv4(),
             html: html,
             javaS: javaS,
             css: css,
