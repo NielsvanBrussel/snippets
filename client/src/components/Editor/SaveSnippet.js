@@ -10,16 +10,20 @@ const SaveSnippet = ({ html, javaS, css }) => {
     const [snippetName, setSnippetName] = useState("")
     const onSubmit = e => {
         e.preventDefault()
-        const newSnippet = {
-            id: uuidv4(),
-            html: html,
-            javaS: javaS,
-            css: css,
-            name: snippetName
+        if (snippetName === "") {
+
         }
-        addSnippet(newSnippet)
-        console.log(newSnippet)
-        
+        else {
+            const newSnippet = {
+                id: uuidv4(),
+                html: html,
+                javaS: javaS,
+                css: css,
+                name: snippetName
+            }
+            addSnippet(newSnippet)
+            saveSnippet()
+        }
     }
 
 

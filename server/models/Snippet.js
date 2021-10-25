@@ -9,6 +9,10 @@ const snippetSchema = mongoose.Schema({
         min: 6,
         max: 255
     },
+    id: {
+        type: String,
+        required: true,
+    },
     description: {
         type: String,
         required: false,

@@ -15,7 +15,7 @@
     overflow: auto;
     
 }
-iframe {
+.iframe__editor {
     overflow: hidden;
     position: absolute;
     padding: 0 0rem;
@@ -60,4 +60,21 @@ iframe {
       position: absolute;
   }
 
+  .snippet__tease {
+      display: block;
+      width: 30%;
+      overflow: hidden;
+      height: 500px;
+  }
+
+  .iframe__tease {
+      width: 100%;
+      height: 100%;
+  }
+
+  .snippets__display__grid {
+      display: flex;
+      justify-content: space-between;
+      height: auto;
+  }
  

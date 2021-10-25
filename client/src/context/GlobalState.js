@@ -22,13 +22,14 @@ export const GlobalProvider = ({ children }) => {
     }
 
 
-    async function getSnippets(){
+    async function getSnippets() {
       try {
-        const res = await axios.get('/api/v1/snippets')
+        const res = await axios.get('/api/snippets/all')
+        // console.log(res.data)
         
         dispatch({
           type: 'GET_SNIPPETS',
-          payload: res.data.data
+          payload: res.data
         })
       } catch (error) {
         dispatch({
@@ -68,7 +69,7 @@ export const GlobalProvider = ({ children }) => {
   
         dispatch({
           type: 'ADD_SNIPPET',
-          payload: res.data.data
+          payload: res.data
         })
   
       } catch (error) {
@@ -84,7 +85,7 @@ export const GlobalProvider = ({ children }) => {
     return (
       <GlobalContext.Provider
         value={{
-          transactions: state.transactions,
+          snippets: state.snippets,
           error: state.error,
           loading: state.loading,
           save: save,

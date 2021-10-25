@@ -64,7 +64,7 @@ const Editor = () => {
 
             <div className="bottom_editor">
                 <iframe
-                    className="iframe"
+                    className="iframe__editor"
                     srcDoc={snippet}
                     title="output"
                     sandbox="allow-scripts"
