@@ -2,7 +2,7 @@ const router = require ('express').Router()
 const Snippet = require ('../models/Snippet')
 
 
-
+// get all snippets
 
 router.get('/all', async (req, res) => {
     try { 
@@ -16,6 +16,8 @@ router.get('/all', async (req, res) => {
     
 })
 
+// create a snippet
+
 router.post('/create', async (req, res) => {
 
     try {
@@ -27,6 +29,34 @@ router.post('/create', async (req, res) => {
         console.error(err)
         res.render('error/500')
     }
+
+})
+
+// delete a snippet
+
+router.delete('/delete/:id', async (req, res) => {
+
+     try {
+        const snippetDeleted = await Snippet.findById(req.params.id);
+        if(!snippetDeleted) {
+            return res.status(404).json({
+                success: false,
+                error: 'No transaction found'
+            })
+        }
+        await snippetDeleted.remove()
+        
+
+        return res.status(200).json({
+            success: true,
+            data: {}
+        })
+    } catch (error) {
+        return res.status(500).json({
+            success: false,
+            error: 'server error'
+        }) 
+    } 
 
 })
 

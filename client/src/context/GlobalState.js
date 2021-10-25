@@ -39,13 +39,14 @@ export const GlobalProvider = ({ children }) => {
         
       }}
   
-    async function deleteSnippet(id) {
+    async function deleteSnippet(_id) {
+      console.log(_id)
       try {
-        await axios.delete(`/api/v1/snippets/${id}`)
+        await axios.delete(`/api/snippets/delete/${_id}`)
   
         dispatch({
-          type: 'DELETE_SNIPPETS',
-          payload: id
+          type: 'DELETE_SNIPPET',
+          payload: _id
           })
         
       } catch (error) {

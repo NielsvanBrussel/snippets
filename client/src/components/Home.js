@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useEffect, useContext } from 'react'
 import { GlobalContext } from "../context/GlobalState"
 import SnippetTease from './Display/SnippetTease'
 
@@ -12,11 +12,6 @@ const Home = () => {
       }, [])
 
 
-
-    const showSnippets = () => {
-          console.log(snippets)
-    }
-
    
     return (
         <div>
@@ -25,7 +20,7 @@ const Home = () => {
                     <SnippetTease key={snippet.id} snippet={snippet}></SnippetTease>
                 ))}
             </div>
-          <button onClick={showSnippets}>show snippets</button>
+          
         </div>
     )
 }
