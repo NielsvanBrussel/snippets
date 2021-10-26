@@ -21,6 +21,11 @@ const AppReducer = (state, action) => {
                 ...state,
                 snippets: [action.payload, ...state.snippets]
             }
+        case 'UPDATE_SNIPPET':
+            return {
+                ...state,
+                snippets: [...state.snippets.filter(snippet => snippet._id !== action.payload._id), action.payload]
+            }
         default:
             return state
     }

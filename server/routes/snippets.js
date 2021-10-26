@@ -32,6 +32,22 @@ router.post('/create', async (req, res) => {
 
 })
 
+// update a snippet
+
+router.post('/update/:id', async (req, res) => {
+    
+    try {
+        const updatedSnippet = await Snippet.findByIdAndUpdate(req.params.id, req.body, {new: true});        
+        res.send(updatedSnippet)
+        console.log(updatedSnippet)
+       
+    } catch (err) {
+        console.error(err)
+        res.render('error/500')
+    }
+
+})
+
 // delete a snippet
 
 router.delete('/delete/:id', async (req, res) => {

@@ -25,8 +25,7 @@ export const GlobalProvider = ({ children }) => {
     async function getSnippets() {
       try {
         const res = await axios.get('/api/snippets/all')
-        // console.log(res.data)
-        
+               
         dispatch({
           type: 'GET_SNIPPETS',
           payload: res.data
@@ -40,13 +39,36 @@ export const GlobalProvider = ({ children }) => {
       }}
   
     async function deleteSnippet(_id) {
-      console.log(_id)
       try {
         await axios.delete(`/api/snippets/delete/${_id}`)
   
         dispatch({
           type: 'DELETE_SNIPPET',
           payload: _id
+          })
+        
+      } catch (error) {
+        dispatch({
+          type: 'SNIPPET_ERROR',
+          payload: error.response.data.error
+        })
+      }
+  
+    }
+
+    async function updateSnippet(updatedSnippet) {
+      const config = {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }
+      try {
+        const res = await axios.post(`/api/snippets/update/${updatedSnippet._id}`, updatedSnippet, config)
+        console.log(res.data)
+  
+        dispatch({
+          type: 'UPDATE_SNIPPET',
+          payload: res.data
           })
         
       } catch (error) {
@@ -93,6 +115,7 @@ export const GlobalProvider = ({ children }) => {
           saveSnippet,
           getSnippets,
           deleteSnippet,
+          updateSnippet,
           addSnippet
         }}>
         {children}

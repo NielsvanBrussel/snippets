@@ -19,8 +19,7 @@ const Home = () => {
                 {snippets.map(snippet => (
                     <SnippetTease key={snippet.id} snippet={snippet}></SnippetTease>
                 ))}
-            </div>
-          
+            </div>          
         </div>
     )
 }
